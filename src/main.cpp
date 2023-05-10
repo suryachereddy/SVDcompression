@@ -33,13 +33,13 @@ int main(int argc, char **argv)
     std::cout << std::endl
               << "Calculating SVD for blue channel" << std::endl;
     Eigen::BDCSVD<Eigen::MatrixXd> svdb(eb, Eigen::ComputeThinU | Eigen::ComputeThinV);
-    
+
     std::cout << std::endl
               << "Calculating SVD for green channel" << std::endl;
-    Eigen::BDCSVD<Eigen::MatrixXd> svdb(eg, Eigen::ComputeThinU | Eigen::ComputeThinV);
+    Eigen::BDCSVD<Eigen::MatrixXd> svdg(eg, Eigen::ComputeThinU | Eigen::ComputeThinV);
 
     std::cout << std::endl
               << "Calculating SVD for red channel" << std::endl;
-    Eigen::BDCSVD<Eigen::MatrixXd> svdb(er, Eigen::ComputeThinU | Eigen::ComputeThinV);
+    Eigen::BDCSVD<Eigen::MatrixXd> svdr(er, Eigen::ComputeThinU | Eigen::ComputeThinV);
     return 0;
 }
