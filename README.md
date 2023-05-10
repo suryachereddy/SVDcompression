@@ -8,11 +8,11 @@ Goal:
 Done:
 1. Load image in CV and split into RGB channels.
 2. Convert CV::Mat to Eigen::Matrix and compute SVD for each channel.
+3. Reconstruct image from SVD.
 
 To Do:
-1. Reconstruct image from SVD.
-2. Compare the reconstructed image with the original image.
-3. Write a function to compute the compression ratio.
+1. Write a function to compute the compression ratio.
+
 
 ## Dependencies
 1. OpenCV
