@@ -5,13 +5,14 @@
 
 int main(int argc, char **argv)
 {
-    if (argc != 2)
+    if (argc != 3)
     {
-        std::cout << "Usage: " << argv[0] << " <image path>" << std::endl;
+        std::cout << "Usage: " << argv[0] << " <image path> <singular-values-to-consider>" << std::endl;
         return -1;
     }
     cv::Mat image;
     std::string image_path = argv[1];
+    int k = atoi(argv[2]);
     image = cv::imread(image_path);
     // display image
     cv::imshow("Image Selected", image);
@@ -46,11 +47,13 @@ int main(int argc, char **argv)
     std::cout << std::endl
               << "Reconstructing image" << std::endl;
     // blue channel
-    Eigen::MatrixXd reconb = svdb.matrixU().leftCols(10) * svdb.singularValues().head(10).asDiagonal() * svdb.matrixV().leftCols(10).transpose();
+    int r, g, b;
+    r = g = b = k;
+    Eigen::MatrixXd reconb = svdb.matrixU().leftCols(b) * svdb.singularValues().head(b).asDiagonal() * svdb.matrixV().leftCols(b).transpose();
     // green channel
-    Eigen::MatrixXd recong = svdg.matrixU().leftCols(10) * svdg.singularValues().head(10).asDiagonal() * svdg.matrixV().leftCols(10).transpose();
+    Eigen::MatrixXd recong = svdg.matrixU().leftCols(g) * svdg.singularValues().head(g).asDiagonal() * svdg.matrixV().leftCols(g).transpose();
     // red channel
-    Eigen::MatrixXd reconr = svdr.matrixU().leftCols(10) * svdr.singularValues().head(10).asDiagonal() * svdr.matrixV().leftCols(10).transpose();
+    Eigen::MatrixXd reconr = svdr.matrixU().leftCols(r) * svdr.singularValues().head(r).asDiagonal() * svdr.matrixV().leftCols(r).transpose();
 
     // eigen to cv
     cv::Mat reconb_cv, recong_cv, reconr_cv;
