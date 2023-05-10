@@ -26,4 +26,6 @@ To Do:
 4. Run `./SVDcompression` to run the program.
 
 ## Run Instructions
-1. Run `./SVDcompression <image-file>` to run the program.
+Run `./svd <image-file> <singular-values>` to run the program.
+
+Example: `./svd example.jpg 50`
